@@ -41,6 +41,9 @@ public class Triangle{
         return Point.distance(v1,v2)+Point.distance(v2,v3)+Point.distance(v1,v3);
     }
     public boolean equals(Triangle other){
+        if (other==null){
+          return false;
+        }
         return v1.equals(other.v1)&&v2.equals(other.v2)&&v3.equals(other.v3);
 
     }
@@ -59,6 +62,6 @@ public class Triangle{
         double s = getPerimeter()/2.0;
         return Math.sqrt(s*(s-Point.distance(v1,v2))*(Point.distance(v1,v3))*(Point.distance(v2,v3)));
     }
-    
+
 
 }
