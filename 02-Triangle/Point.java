@@ -27,4 +27,16 @@ public class Point{
   public String toString(){
       return "(" + x + ", " + y + ")";
   }
+  public static boolean closeEnough(double a, double b){
+    if (a == 0.0){
+      return b==0.0;
+    }
+    else if (b==0.0){
+      return false;
+    }
+    return Math.abs(100.0*(a-b)/(b)) <= 0.001;
+  }
+  public boolean equals(Point other){
+    return closeEnough(other.x, x) && closeEnough(other.y, y);
+  }
 }

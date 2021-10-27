@@ -1,8 +1,10 @@
 public class Tostringmain{
     public static void main(String[] args){
-        Point P1 = new Point(0.0,0.0);
-        Point P2 = new Point(4.0,0.0);
-        Point P3 = new Point(0.0,3.0);
+        Point P1 = new Point(0.0,1.0);
+        Point check = new Point(0.0000000001,1.000000000001);
+        Point a = new Point(4.0000000001,1.0000000001);
+        Point P2 = new Point(4.0,1.0);
+        Point P3 = new Point(1.0,3.0);
         System.out.println(P1.toString());
 
 
@@ -31,8 +33,29 @@ public class Tostringmain{
         System.out.println(T3.getVertex(3));
         System.out.println(T3.toString());
         System.out.println(T3.getPerimeter());
-
+        System.out.println(Point.closeEnough(100.0,99.0999));
+        System.out.println(P2.equals(a));
+        System.out.println(T2.equals(T3));
         
+        Triangle T4 = new Triangle(1,1,1,2,2,1);
+        System.out.println(T4.classify());
+        Triangle T5 = new Triangle(2.0,1.0,4.0,1.0,3.0,2.73205080757);
+        System.out.println(T5.classify());
+
+
+        System.out.println(T2.area());
+
+
+
+    
+
+
+
+
+
+
+
+
 
     }
 }
