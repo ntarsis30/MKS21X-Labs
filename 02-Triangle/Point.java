@@ -37,6 +37,9 @@ public class Point{
     return Math.abs(100.0*(a-b)/(b)) <= 0.001;
   }
   public boolean equals(Point other){
+    if (other==null){
+      return false;
+    }
     return closeEnough(other.x, x) && closeEnough(other.y, y);
   }
 }
