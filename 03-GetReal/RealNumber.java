@@ -41,6 +41,20 @@ public class RealNumber{
     return value-other.getValue();
   }
 
+  public int compareTo(RealNumber other){
+    if((value-other.getValue() < 1) && (value-other.getValue() > 0)){
+        return (int) (getValue()-other.getValue())+1; 
+    }
+
+    if((value-other.getValue() > -1) && (value-other.getValue() < 0)) {
+        return (int) (value-other.getValue())-1; 
+    }
+    return (int) (value-other.getValue());
+  }
+
+  public boolean equals(RealNumber other){
+    return value == other.getValue();
+  }
 
   public double getValue(){
     return value;

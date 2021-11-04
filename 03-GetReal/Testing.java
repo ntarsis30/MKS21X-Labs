@@ -25,6 +25,13 @@ public class Testing{
         System.out.println(ra_1.subtract(ra_2));
         System.out.println(ra_2.equals(ra_4));
         System.out.println(RationalNumber.gcd(14,6));
+        System.out.println(re_2.compareTo(re_2));
+        System.out.println(re_1.compareTo(re_2));
+         System.out.println(re_2.compareTo(re_1));
+
+        
+
+
 
 
 
