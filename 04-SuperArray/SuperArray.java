@@ -8,9 +8,13 @@ public class SuperArray{
     public int size(){
         return size;
     }
-    public void add(String append){
+    public boolean add(String append){
         data[size] = append;
         size++;
+        if (size == data.length){
+          resize();
+        }
+        return true;
     }
     public void remove(int take_off){
         String curr = data[take_off];
@@ -40,5 +44,31 @@ public class SuperArray{
         }
         return ans + "]";
     }
+    public String get (int index){
+      if(index < 0 || index >= size){
+        return "badindex";
+      }
+      return data[index];
+    }
+    public String set(int index, String element){
+      if(index < 0 || index >= size){
+        return "badindex";
+      }
+      String old = data[index];
+      data[index] = element;
+      return old;
+    }
+    public SuperArray(int initialCapacity){
+      size = 0;
+      data = new String[initialCapacity];
+    }
+    private void resize(){
+      String[] changed = new String[data.length*2+1];
+      for (int i = 0; i < size;i++){
+        changed[i]=data[i];
+      }
+      data = changed;
+    }
 
-}   
+
+}
