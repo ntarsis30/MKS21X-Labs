@@ -69,6 +69,32 @@ public class SuperArray{
       }
       data = changed;
     }
+    public int indexOf(String target){
+      for (int i = 0; i < size;i++){
+        if(data[i].equals(target)){
+          return i;
+        }
+      }
+      return -1;
+    }
+    public void add(int index,String value){
+      if (index < 0 && index > size){
+        System.out.println("badindex");
+      }
+      size++;
+      if (size == data.length){
+        resize();
+      }
+      for (int i = size-1; i > index; i--){
+        data[i]=data[i-1];
+      }
+      data[index]=value;
+    }
+    public boolean remove(String target){
+      int first = indexOf(target);
+      remove(first);
+      return first != -1;
+    }
 
 
 }
