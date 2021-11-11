@@ -50,33 +50,22 @@ public class SuperArray{
     }
     public String get (int index){
       if(index < 0 || index >= size){
-<<<<<<< HEAD
         throw new IndexOutOfBoundsException("Value out of range: "+index);
-=======
-        return "badindex";
->>>>>>> 24d876ed974dd2da4a1d80084ab1092eca950465
       }
       return data[index];
     }
     public String set(int index, String element){
       if(index < 0 || index >= size){
-<<<<<<< HEAD
         throw new IndexOutOfBoundsException("Value out of range: "+index);
-=======
-        return "badindex";
->>>>>>> 24d876ed974dd2da4a1d80084ab1092eca950465
       }
       String old = data[index];
       data[index] = element;
       return old;
     }
     public SuperArray(int initialCapacity){
-<<<<<<< HEAD
       if(initialCapacity<0){
         throw new IllegalArgumentException("Value out of range: "+initialCapacity);
         }
-=======
->>>>>>> 24d876ed974dd2da4a1d80084ab1092eca950465
       size = 0;
       data = new String[initialCapacity];
     }
@@ -95,7 +84,6 @@ public class SuperArray{
       }
       return -1;
     }
-<<<<<<< HEAD
     public int lastindexOf(String target){
       for (int i = size-1; i <= 0;i--){
         if(data[i].equals(target)){
@@ -107,11 +95,6 @@ public class SuperArray{
     public void add(int index,String value){
       if (index < 0 || index > size){
         throw new IndexOutOfBoundsException("Value out of range: "+index);
-=======
-    public void add(int index,String value){
-      if (index < 0 && index > size){
-        System.out.println("badindex");
->>>>>>> 24d876ed974dd2da4a1d80084ab1092eca950465
       }
       size++;
       if (size == data.length){
@@ -127,10 +110,4 @@ public class SuperArray{
       remove(first);
       return first != -1;
     }
-<<<<<<< HEAD
 }
-=======
-
-
-}
->>>>>>> 24d876ed974dd2da4a1d80084ab1092eca950465
