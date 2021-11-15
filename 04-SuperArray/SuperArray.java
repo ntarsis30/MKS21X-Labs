@@ -84,8 +84,8 @@ public class SuperArray{
       }
       return -1;
     }
-    public int lastindexOf(String target){
-      for (int i = size-1; i <= 0;i--){
+    public int lastIndexOf(String target){
+      for (int i = size-1; i >= 0;i--){
         if(data[i].equals(target)){
           return i;
         }
