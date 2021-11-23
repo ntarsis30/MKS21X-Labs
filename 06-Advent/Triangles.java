@@ -3,10 +3,10 @@
   import java.util.Scanner;
   import java.util.ArrayList;
   public class Triangles {
-    public static int part1() {
+    public static int part1(String fileName) {
       int ans = 0;
       try {
-          File file = new File("data");
+          File file = new File(fileName);
           Scanner input = new Scanner(file);
           while (input.hasNextInt()) {
               int a = input.nextInt();
@@ -23,13 +23,13 @@
       }
       return ans;
     }
-    public static int part2() {
+    public static int part2(String fileName) {
       int ans = 0;
       ArrayList<Integer> first = new ArrayList<Integer>();
       ArrayList<Integer> second = new ArrayList<Integer>();
       ArrayList<Integer> third = new ArrayList<Integer>();
       try {
-          File file = new File("data");
+          File file = new File(fileName);
           Scanner input = new Scanner(file);
           while (input.hasNextInt()) {
               int a = input.nextInt();
@@ -66,7 +66,14 @@
       return ans;
     }
     public static void main(String[] args){
-        System.out.println(part1());
-        System.out.println(part2());
+        String test = args[0];
+        int num = Integer.parseInt(args[1]);
+        if(num==1){
+          System.out.println(part1(test));
+
+        }
+        else if (num==2){
+          System.out.println(part2(test));
+        }
     }
 }
