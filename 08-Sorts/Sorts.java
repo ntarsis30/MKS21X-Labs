@@ -5,14 +5,43 @@ public class Sorts{
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
   */
-  public static int[] Test(int size) {
+  public static int[] randomTest(int size) {
     int[] nums = new int[size];
     for (int i = 0; i < size; i++) {
-      nums[i] = (int)(Math.random()*18+3);
+      nums[i] = (int)(Math.random()*18-3);
+    }
+    return nums;
+  }
+  public static int[] sorted(int size) {
+    int[] nums = new int[size];
+    for (int i = 0; i < size; i++) {
+      nums[i] = (int)(Math.random()*18-3);
     }
     Arrays.sort(nums);
     return nums;
   }
+  public static int[] reverseSorted(int size) {
+    int[] nums = new int[size];
+    for (int i = 0; i < size; i++) {
+      nums[i] = (int)(Math.random()*18-3);
+    }
+    Arrays.sort(nums);
+    for (int i = 0; i < size;i++){
+      int temp = nums[0];
+      int temp2 = nums[size-1-i];
+      nums[0]=temp2;
+      nums[size-1-i]=temp;
+    }
+    return nums;
+  }
+  public static int[] allSame(int size,int val) {
+    int[] nums = new int[size];
+    for (int i = 0; i < size; i++) {
+      nums[i] = val;
+    }
+    return nums;
+  }
+
   public static void bubbleSort(int[] data){
     int end = data.length-1;
     for (int i = 0; i < data.length;i++){
@@ -39,7 +68,22 @@ public class Sorts{
     int[] test = {9,6,4,2,5,7,3,1,6,2};
     bubbleSort(test);
     System.out.println(Arrays.toString(test));
-    test = Test(100);
+    test = randomTest(100);
+    bubbleSort(test);
+    System.out.println(Arrays.toString(test));
+    test = sorted(100);
+    bubbleSort(test);
+    System.out.println(Arrays.toString(test));
+    test = reverseSorted(100);
+    bubbleSort(test);
+    System.out.println(Arrays.toString(test));
+    test = allSame(100,5);
+    bubbleSort(test);
+    System.out.println(Arrays.toString(test));
+    test = new int[0];
+    bubbleSort(test);
+    System.out.println(Arrays.toString(test));
+    test = randomTest(1);
     bubbleSort(test);
     System.out.println(Arrays.toString(test));
   }
