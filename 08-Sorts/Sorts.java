@@ -62,11 +62,28 @@ public class Sorts{
           end--;
       }
     }
-
   }
+  /*Selection sort
+ */
+public static void selectionSort(int [] ary) {
+  for (int start = 0; start < ary.length-1;start++){
+    int curr_min = ary[start];
+    int pos = start;
+    for (int i = start+1; i<ary.length;i++){
+      if(ary[i]< curr_min){
+        curr_min = ary[i];
+        pos=i;
+      }
+    }
+    int temp = ary[pos];
+    int temp2  = ary[start];
+    ary[start]=temp;
+    ary[pos]=temp2;
+  }
+}
   public static void main(String[] args){
     int[] test = {9,6,4,2,5,7,3,1,6,2};
-    bubbleSort(test);
+    selectionSort(test);
     System.out.println(Arrays.toString(test));
     test = randomTest(100);
     bubbleSort(test);
