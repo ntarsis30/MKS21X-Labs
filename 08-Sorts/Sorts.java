@@ -65,25 +65,45 @@ public class Sorts{
   }
   /*Selection sort
  */
-public static void selectionSort(int [] ary) {
-  for (int start = 0; start < ary.length-1;start++){
-    int curr_min = ary[start];
-    int pos = start;
-    for (int i = start+1; i<ary.length;i++){
-      if(ary[i]< curr_min){
-        curr_min = ary[i];
-        pos=i;
+  public static void selectionSort(int [] ary) {
+    for (int start = 0; start < ary.length-1;start++){
+      int curr_min = ary[start];
+      int pos = start;
+      for (int i = start+1; i<ary.length;i++){
+        if(ary[i]< curr_min){
+          curr_min = ary[i];
+          pos=i;
+        }
+      }
+      int temp = ary[pos];
+      int temp2  = ary[start];
+      ary[start]=temp;
+      ary[pos]=temp2;
+    }
+  }
+  public static void insertionSort(int[] ary){
+    for (int i = 1; i < ary.length;i++){
+      int original = ary[i];
+      if(ary[i-1]>original){
+        for (int j = i-1;j>=0;j--){
+          if (ary[j]>original){
+            ary[j+1]=ary[j];
+          }
+          else{
+            ary[j+1]=original;
+          }
+        }
+        if(ary[0]>original){
+          ary[0]=original;
+        }
       }
     }
-    int temp = ary[pos];
-    int temp2  = ary[start];
-    ary[start]=temp;
-    ary[pos]=temp2;
   }
-}
+
   public static void main(String[] args){
     int[] test = {9,6,4,2,5,7,3,1,6,2};
-    selectionSort(test);
+    //selectionSort(test);
+    insertionSort(test);
     System.out.println(Arrays.toString(test));
     test = randomTest(100);
     bubbleSort(test);
