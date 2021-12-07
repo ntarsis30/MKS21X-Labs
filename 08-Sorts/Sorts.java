@@ -84,22 +84,14 @@ public class Sorts{
   public static void insertionSort(int[] ary){
     for (int i = 1; i < ary.length;i++){
       int original = ary[i];
-      if(ary[i-1]>original){
-        for (int j = i-1;j>=0;j--){
-          if (ary[j]>original){
-            ary[j+1]=ary[j];
-          }
-          else{
-            ary[j+1]=original;
-          }
-        }
-        if(ary[0]>original){
-          ary[0]=original;
-        }
+      int j = i-1;
+      while (j>=0 && ary[j]>original){
+        ary[j+1]=ary[j];
+        j--;
       }
+      ary[j+1]=original;
     }
   }
-
   public static void main(String[] args){
     int[] test = {9,6,4,2,5,7,3,1,6,2};
     //selectionSort(test);
