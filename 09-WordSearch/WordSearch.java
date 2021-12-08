@@ -57,6 +57,21 @@ public class WordSearch{
      * and the board is NOT modified.
      */
     public boolean addWordHorizontal(String word,int row, int col){
+      if(col+word.length()>data[0].length){
+        return false;
+      }
+      boolean b = true;
+      for (int i = col; i < data[0].length;i++){
+        if(data[row][i]!='_' || data[row][i]!=word.charAt(i-col)){
+          b = false;
+          return b;
+        }
+      }
+      if(b){
+        for (int i = col; i < data[0].length;i++){
+          data[row][i]=word.charAt(i-col);
+          }
+      }
       return true;
     }
 
