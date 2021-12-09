@@ -120,7 +120,6 @@ public class WordSearch{
         data[i][j]=word.charAt(i-row);
       }
       return true;
-
     }
     //public boolean addAll(String word, int row, int col, int dir(0>0, 1>45, 2>90...)){
 
