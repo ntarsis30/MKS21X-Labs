@@ -104,6 +104,35 @@ public class WordSearch{
           }
       }
       return true;
+    }
+    /**Attempts to add a given word to the specified position of the WordGrid.
+     *The word is added from top left towards the bottom right, it must fit on the board,
+     *and must have a corresponding letter to match any letters that it overlaps.
+     *
+     *@param word is any text to be added to the word grid.
+     *@param row is the vertical locaiton of where you want the word to start.
+     *@param col is the horizontal location of where you want the word to start.
+     *@return true when the word is added successfully. When the word doesn't fit,
+     *or there are overlapping letters that do not match, then false is returned.
+     */
+    public boolean addWordDiagonal(String word,int row, int col){
+      if(row+word.length()>data.length||col+word.length()>data[0].length){
+        return false;
+      }
+      boolean b = true;
+      for(int i = row,j = col; i < row+word.length();i++,j++){
+        if(data[i][j]!='_' && data[i][j]!=word.charAt(i-row)){
+          b = false;
+          return b;
+        }
+      }
+      if(b){
+        for (int i = row,j = col; i < row+word.length();i++,j++){
+          data[i][j]=word.charAt(i-row);
+          }
+      }
+      return true;
 
     }
+
 }
