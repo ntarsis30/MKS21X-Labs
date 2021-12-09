@@ -6,7 +6,7 @@ public class Tester{
     System.out.println(test.toString());
     System.out.println(test.addWordHorizontal("hi",0,0));
     System.out.println(test);
-    System.out.println(test.addWordVertical("hi",3,0));
+    System.out.println(test.addWordVertical("hi",0,0));
     System.out.println(test);
     System.out.println(test.addWordDiagonal("hi",0,0));
     System.out.println(test);

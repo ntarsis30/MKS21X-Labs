@@ -60,18 +60,14 @@ public class WordSearch{
       if(col+word.length()>data[0].length){
         return false;
       }
-      boolean b = true;
       for (int i = col; i < col+word.length();i++){
         if(data[row][i]!='_' && data[row][i]!=word.charAt(i-col)){
-          b = false;
-          return b;
+          return false;
         }
       }
-      if(b){
-        for (int i = col; i < col+word.length();i++){
-          data[row][i]=word.charAt(i-col);
-          }
-      }
+      for (int i = col; i < col+word.length();i++){
+        data[row][i]=word.charAt(i-col);
+        }
       return true;
     }
 
@@ -91,17 +87,13 @@ public class WordSearch{
       if(row+word.length()>data.length){
         return false;
       }
-      boolean b = true;
       for (int i = row; i < row+word.length();i++){
         if(data[i][col]!='_' && data[i][col]!=word.charAt(i-row)){
-          b = false;
-          return b;
+          return false;
         }
       }
-      if(b){
-        for (int i = row; i < row+word.length();i++){
-          data[i][col]=word.charAt(i-row);
-          }
+      for (int i = row; i < row+word.length();i++){
+        data[i][col]=word.charAt(i-row);
       }
       return true;
     }
@@ -119,20 +111,19 @@ public class WordSearch{
       if(row+word.length()>data.length||col+word.length()>data[0].length){
         return false;
       }
-      boolean b = true;
       for(int i = row,j = col; i < row+word.length();i++,j++){
         if(data[i][j]!='_' && data[i][j]!=word.charAt(i-row)){
-          b = false;
-          return b;
+          return false;
         }
       }
-      if(b){
-        for (int i = row,j = col; i < row+word.length();i++,j++){
-          data[i][j]=word.charAt(i-row);
-          }
+      for (int i = row,j = col; i < row+word.length();i++,j++){
+        data[i][j]=word.charAt(i-row);
       }
       return true;
 
     }
+    //public boolean addAll(String word, int row, int col, int dir(0>0, 1>45, 2>90...)){
+
+    //}
 
 }
