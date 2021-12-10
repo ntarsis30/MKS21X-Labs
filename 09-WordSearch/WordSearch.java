@@ -1,5 +1,6 @@
 /*Lab9: Word Search generator
 */
+import java.lang.Math;
 public class WordSearch{
     private char[][]data;
 
@@ -121,8 +122,30 @@ public class WordSearch{
       }
       return true;
     }
-    //public boolean addAll(String word, int row, int col, int dir(0>0, 1>45, 2>90...)){
+    public boolean addWord(String word, int row, int col, int rowInc, int colInc){
+      int act1 = row + word.length()*rowInc;
+      int act2 = col + word.length()*colInc;
+      if ((act1<0 || act1>data.length)||(act2<0 || act2>data[0].length)){
+        return false;
+      }
+      for(int i = row,j = col; (i != act1 || rowInc==0)&&(j != act2 || colInc==0) ;i+=rowInc,j+=colInc){
+        int ver_d = Math.abs(i-row);
+        int hor_d = Math.abs(j-col);
+        int curr = Math.max(ver_d,hor_d);
+        if(data[i][j]!='_' && data[i][j]!=word.charAt(curr)){
+          return false;
+        }
+      }
+      for(int i = row,j = col; (i != act1 || rowInc==0)&&(j != act2 || colInc==0) ;i+=rowInc,j+=colInc){
+        int ver_d = Math.abs(i-row);
+        int hor_d = Math.abs(j-col);
+        int curr = Math.max(ver_d,hor_d);
+        data[i][j]=word.charAt(curr);
+      }
+      return true;
 
-    //}
+      
+
+    }
 
 }
