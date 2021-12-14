@@ -1,22 +1,25 @@
 /*Lab9: Word Search generator
 */
 import java.lang.Math;
+import java.util.*;
+import java.io.*;
 public class WordSearch{
     private char[][]data;
+    private ArrayList<String> wordsAdded;
+    private Random randgen;
+    private int seed;
 
-    /**Initialize the grid to the size specified
-     *and fill all of the positions with '_'
-     *@param rows is the starting height of the WordSearch
-     *@param cols is the starting width of the WordSearch
-     */
-    public WordSearch(int rows,int cols){
+
+    public WordSearch(int rows,int cols, String fileName){
+      //Choose a randSeed using the clock random
+      randgen = new Random();
+      seed = randgen.nextInt();
+      randgen = new Random(seed);
       data = new char[rows][cols];
-      for (int i = 0; i < rows; i++){
-        for (int j = 0; j < cols;j++){
-          data[i][j]='_';
-        }
-      }
-    }
+      wordsAdded = new ArrayList<String>();
+      clear();
+      //addAllWords(fileName);
+   }
 
     /**Set all values in the WordSearch to underscores'_'*/
     private void clear(){
@@ -27,22 +30,22 @@ public class WordSearch{
       }
     }
 
-    /**Each row is a new line, there is a space between each letter
-     *@return a String with each character separated by spaces, and rows
-     *separated by newlines.
-     */
 
+    //The new toString() method should be formatted to include the list of words you added separated by spaces, as well as the random seed.
     public String toString(){
-      String ans = "";
-      for (int i = 0; i < data.length;i++){
-        for (int j = 0; j < data[0].length-1;j++){
-          ans += data[i][j];
-          ans += " ";
+        String ans = "";
+        for(int r = 0; r < data.length; r++){
+          for(int c = 0; c < data[r].length; c++){
+            ans += data[r][c]+" ";
+          }
+          ans+="\n";
         }
-        ans += data[i][data[0].length-1];
-        ans += "\n";
-      }
-      return ans;
+        ans += "words: ";
+        for(String word:wordsAdded){
+          ans+= word+" ";
+        }
+        ans += "\nseed: "+seed;
+        return ans;
     }
 
 
@@ -57,6 +60,7 @@ public class WordSearch{
      * or there are overlapping letters that do not match, then false is returned
      * and the board is NOT modified.
      */
+     /*
     public boolean addWordHorizontal(String word,int row, int col){
       if(col+word.length()>data[0].length){
         return false;
@@ -71,6 +75,7 @@ public class WordSearch{
         }
       return true;
     }
+    */
 
 
    /**Attempts to add a given word to the specified position of the WordGrid.
@@ -84,6 +89,7 @@ public class WordSearch{
      *or there are overlapping letters that do not match, then false is returned.
      *and the board is NOT modified.
      */
+     /*
     public boolean addWordVertical(String word,int row, int col){
       if(row+word.length()>data.length){
         return false;
@@ -98,6 +104,7 @@ public class WordSearch{
       }
       return true;
     }
+
     /**Attempts to add a given word to the specified position of the WordGrid.
      *The word is added from top left towards the bottom right, it must fit on the board,
      *and must have a corresponding letter to match any letters that it overlaps.
@@ -108,6 +115,7 @@ public class WordSearch{
      *@return true when the word is added successfully. When the word doesn't fit,
      *or there are overlapping letters that do not match, then false is returned.
      */
+     /*
     public boolean addWordDiagonal(String word,int row, int col){
       if(row+word.length()>data.length||col+word.length()>data[0].length){
         return false;
@@ -122,6 +130,7 @@ public class WordSearch{
       }
       return true;
     }
+    */
     public boolean addWord(String word, int row, int col, int rowInc, int colInc){
       int act1 = row + word.length()*rowInc;
       int act2 = col + word.length()*colInc;
@@ -143,9 +152,6 @@ public class WordSearch{
         data[i][j]=word.charAt(curr);
       }
       return true;
-
-      
-
     }
 
 }
