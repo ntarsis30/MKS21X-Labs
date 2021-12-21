@@ -7,7 +7,7 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     }
     private int whereToPlace(T value){
         for (int i = 0; i < this.size(); i++){
-            if (this.get(i).compareTo(value) > 0){
+            if (this.get(i).compareTo(value) >= 0){
                 return i;
             }
         }
@@ -26,5 +26,14 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
         }  
         throw new IllegalArgumentException();
     }
-    
+    public static void main(String[] args){
+        OrderedArrayList<String> curr = new OrderedArrayList<>();
+        curr.add("hello");
+        System.out.println(curr.get(0));
+        curr.add("by");
+        System.out.println(curr.get(0));
+        // expection curr.add(null);
+        curr.set(0,"zan");
+        System.out.println(curr.get(0));
+    }   
 }
