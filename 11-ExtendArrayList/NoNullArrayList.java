@@ -27,4 +27,14 @@ public class NoNullArrayList<T> extends ArrayList<T>{
         }
         super.add(idx, val);
     }
+    public static void main(String[] args){
+        NoNullArrayList<String> curr = new NoNullArrayList<>();
+        curr.add("hello");
+        System.out.println(curr.get(0));
+        curr.set(0,"there");
+        System.out.println(curr.get(0));
+        curr.add(0,"by");
+        System.out.println(curr.get(0));
+        // exception curr.add(null);
+    }
 }
