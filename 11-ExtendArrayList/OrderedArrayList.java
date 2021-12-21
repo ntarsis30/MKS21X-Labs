@@ -13,4 +13,18 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
         }
         return this.size();
     }
+    public boolean add(T val) {
+        super.add(whereToPlace(val), val);
+        return true;
+    }
+    public T set(int idx, T val) {
+        if(idx >= 0 && idx < this.size()){
+            T prev = super.get(idx);
+            super.remove(idx);
+            this.add(whereToPlace(val),val);
+            return prev;
+        }  
+        throw new IllegalArgumentException();
+    }
+    
 }
