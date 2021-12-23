@@ -49,8 +49,7 @@ public class Sorts{
       for (int j = 0; j < end;j++){
         if(data[j]>data[j+1]){
           int tempJ1 = data[j];
-          int tempJ  = data[j+1];
-          data[j]=tempJ;
+          data[j]=data[j+1];
           data[j+1]=tempJ1;
           swaps++;
         }
@@ -75,9 +74,8 @@ public class Sorts{
           pos=i;
         }
       }
-      int temp = ary[pos];
       int temp2  = ary[start];
-      ary[start]=temp;
+      ary[start]=ary[pos];
       ary[pos]=temp2;
     }
   }
