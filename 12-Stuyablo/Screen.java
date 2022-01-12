@@ -1,7 +1,8 @@
 import java.util.Random;
 public class Screen{
   public static void main(String[] args){
-    
+    Text.hideCursor();
+    Text.clear();    
     for (int i = 1; i <= 30;i++){
       Text.go(i,1);
       System.out.print(Text.colorize(" ", Text.MAGENTA+Text.BACKGROUND));
@@ -31,10 +32,8 @@ public class Screen{
         color = Text.GREEN;
       }
       String display = Integer.toString(color);  
-      System.out.print(Text.colorize(display, Text.MAGENTA));
+      System.out.print(Text.colorize(""+nums[i],color));
       Text.go(2,2+(i+1)*6);
-
-
     }
     Text.go(31,1);
     
