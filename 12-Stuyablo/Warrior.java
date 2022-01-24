@@ -54,6 +54,18 @@ public class Warrior extends Adventurer {
     public void setWarcry(String warcry){
 	     this.warcry = warcry;
     }
+    
+    private int rageMax;
+    public String getSpecialName(){
+      return "Rage";
+    }
+    public int getSpecialMax(){
+      return rageMax;
+    }
+    public int getSpecial(){
+      return rage;
+    }
+  
 
 
 }
