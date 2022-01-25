@@ -1,5 +1,6 @@
 import java.util.*;
 public class Game{
+
   public static void draw(){
     Text.hideCursor();
     Text.clear();    
@@ -83,58 +84,52 @@ public class Game{
     }
   }
   public static void main(String[] args){
-    draw_screen();
-    
+    draw();
+    Text.go(2,2);
+
+    Adventurer a = new Warrior("Conan","Aaaaaaaar!",20, 45);
+    Adventurer b = new Warrior("Homer","Donuts?",0, 55);
+    Adventurer c = new Wizard("Agnes","Zap!",20, 65);
+    Adventurer d = new Wizard("Spelliamus","My name?",77, 77);
+    Adventurer[] party = {a,b,c,d};
+    for (int i = 0; i < party.length; i++){
+      System.out.print(party[i].getName());
+      Text.go(2,2+(i+1)*20);
+    }
+    Text.go(3,2);
+    for (int i = 0; i < party.length; i++){
+      System.out.print(party[i].getSpecialName()+":");
+      System.out.print(party[i].getSpecial()+"/");
+      System.out.print(party[i].getSpecialMax());
+      Text.go(3,2+(i+1)*20);
+    }
+    Text.go(4,2);
+    for (int i = 0; i < party.length; i++){
+      int color = Text.WHITE;
+      int curr = party[i].getHP();
+      int max = party[i].getmaxHP();
+      if (100*(((double) curr)/max)<25){
+        color = Text.RED;
+      }
+      else if(100*(((double) curr)/max)>75){
+        color = Text.GREEN;
+      }
+      System.out.print("HP:");
+      System.out.print(Text.colorize(curr+"/",color));
+      System.out.print(max);
+      Text.go(4,2+(i+1)*20);
+    }
+    Text.go(5,2);
+    Adventurer enemy = new Wizard("Crazed Lunatic","Poof!",20, 65);
+    System.out.print(Text.colorize("Enter command: ", Text.BLUE));
+    Scanner in = new Scanner(System.in);
+    String check = in.nextLine();
+    if(check.equals("")||check.equals("attack")){
+      System.out.println(a.attack(enemy));
+    }
+    else if(check.equals("quit")||check.equals("q")){
+      System.exit(0);
+    }
 
   }
 }
-/*
-public class Game{
-  public static void main(String[] args) {
-    Adventurer a = new Warrior("Conan","Aaaaaaaar!",20);
-    Adventurer b = new Warrior("Homer","Donuts?",0);
-    Adventurer c = new Wizard("Agnes","Zap!",20);
-    Adventurer d = new Wizard("Spelliamus","My name?",77);
-    System.out.println(a+" ("+a.getHP()+"HP)");
-    System.out.println(b+" ("+b.getHP()+"HP)");
-    a.attack(b);
-    b.attack(a);
-    System.out.println(a+" ("+a.getHP()+"HP)");
-    System.out.println(b+" ("+b.getHP()+"HP)");
-    a.specialAttack(b);
-    b.specialAttack(a);
-
-    System.out.println(a+" ("+a.getHP()+"HP)");
-    System.out.println(b+" ("+b.getHP()+"HP)");
-    System.out.println(c+" ("+c.getHP()+"HP)");
-    System.out.println(d+" ("+d.getHP()+"HP)");
-
-    a.attack(b);
-    b.attack(a);
-    c.attack(d);
-    d.attack(b);
-
-    System.out.println(a+" ("+a.getHP()+"HP)");
-    System.out.println(b+" ("+b.getHP()+"HP)");
-    System.out.println(c+" ("+c.getHP()+"HP)");
-    System.out.println(d+" ("+d.getHP()+"HP)");
-
-    a.specialAttack(b);
-    b.specialAttack(a);
-    c.specialAttack(b);
-    d.specialAttack(a);
-
-    System.out.println(a+" ("+a.getHP()+"HP)");
-    System.out.println(b+" ("+b.getHP()+"HP)");
-    System.out.println(c+" ("+c.getHP()+"HP)");
-    System.out.println(d+" ("+d.getHP()+"HP)");
-
-    d.specialAttack(d);
-    System.out.println(d+" ("+d.getHP()+"HP)");
-
-
-
-    }
-
-}
-*/

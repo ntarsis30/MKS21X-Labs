@@ -7,44 +7,42 @@ public class Warrior extends Adventurer {
     }
 
     public Warrior(String name){
-	     this(name,"Valhalllaaaaa!!", 18);
+	     this(name,"Valhalllaaaaa!!", 18,40);
     }
 
-    public Warrior(String name, String warcry, int rage){
-      super(name,30+(int)(Math.random()*10));
+    public Warrior(String name, String warcry, int rage, int rageMax){
+      super(name,10+(int)(Math.random()*30),45);
       setWarcry(warcry);
       setRage(rage);
+      this.rageMax = rageMax;
     }
 
     //warrior methods
 
-    public void attack(Damageable other){
+    public String attack(Damageable other){
     	  int damage = (int)(Math.random()*10)+1;
   	    other.applyDamage(damage);
-  	    setRage(getRage() + 1);
-  	    System.out.println(this +
+  	    setRage(getSpecial() + 1);
+  	    return(this +
             " attacked " + other + " for " +
             damage + " damage!");
     }
 
-    public void specialAttack(Damageable other){
-	     if(getRage() >= 10){
+    public String specialAttack(Damageable other){
+	     if(getSpecial() >= 10){
   	        int damage = (int)(Math.random()*20)+1;
             other.applyDamage(damage);
-            System.out.println(this + " unleashes his fury upon "
-             + other + " for " + damage + " damage! "+warcry);
-            setRage(getRage() - 10);
+            setRage(getSpecial() - 10);
+            return(this + " unleashes his fury upon "
+             + other + " for " + damage + " damage! "+ warcry);
 	    }else{
-			    System.out.println("Not enough rage! ");
           attack(other);
+			    return("Not enough rage! ");
 	    }
     }
 
     //get methods
 
-    public int getRage(){
-	     return rage;
-    }
 
     //set methods
     public void setRage(int r){

@@ -23,12 +23,14 @@ public abstract class Adventurer implements Damageable{
   }
 
   public Adventurer(String name){
-      this(name, 10);
+      this(name, 10, 50);
   }
 
-  public Adventurer(String name, int hp){
+  public Adventurer(String name, int hp, int maxHP){
       this.name = name;
       this.HP = hp;
+      this.maxHP = maxHP;
+
   }
 
   //toString method

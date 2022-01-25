@@ -7,39 +7,40 @@ public class Wizard extends Adventurer {
     }
 
     public Wizard(String name){
-	     this(name,"Wingardium Leviosa!!", 20);
+	     this(name,"Wingardium Leviosa!!", 20, 30);
     }
 
-    public Wizard(String name, String incantation, int wisdom){
-      super(name,30+(int)(Math.random()*10));
+    public Wizard(String name, String incantation, int wisdom, int wisdomMax){
+      super(name,10+(int)(Math.random()*30),50);
       setincantation(incantation);
       setwisdom(wisdom);
+      this.wisdomMax = wisdomMax;
     }
 
     //Wizard methods
 
-    public void attack(Damageable other){
+    public String attack(Damageable other){
     	int damage = (int)(Math.random()*7)+1;
   	    other.applyDamage(damage);
-  	    setwisdom(getwisdom() + 1);
-  	    System.out.println(this + " attacked " + other + " for " + damage + " damage!");
+  	    setwisdom(getSpecial() + 1);
+  	    return (this + " attacked " + other + " for " + damage + " damage!");
     }
 
-    public void specialAttack(Damageable other){
-	     if(getwisdom() >= 10){
+    public String specialAttack(Damageable other){
+	     if(getSpecial() >= 10){
   	        int damage = (int)(Math.random()*15)+5;
             other.applyDamage(damage);
-            System.out.println(this + " fires a spell at " + other + " for " + damage + " damage! " + incantation);
-            setwisdom(getwisdom() - 2);
+            setwisdom(getSpecial() - 2);
+            return (this + " fires a spell at " + other + " for " + damage + " damage! " + incantation);
 	    }else{
-			System.out.println("Not enough wisdom! ");
-            attack(other);
+        attack(other);
+			  return("Not enough wisdom! ");
 	    }
     }
 
     //get methods
 
-    public int getwisdom(){
+    public int getSpecial(){
 	     return wisdom;
     }
 
@@ -50,6 +51,13 @@ public class Wizard extends Adventurer {
 
     public void setincantation(String incantation){
 	     this.incantation = incantation;
+    }
+    private int wisdomMax;
+    public String getSpecialName(){
+      return "Spell";
+    }
+    public int getSpecialMax(){
+      return wisdomMax;
     }
 
 
